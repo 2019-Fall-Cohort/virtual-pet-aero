@@ -1,10 +1,14 @@
 class VirtualPet {
 
-
     constructor() {
+
+        this.name = "NoName"
+        this.species = "elephant"
         this.hunger = 100;
         this.happiness = 100;
-
+        this.health = 100;
+        this.thirst = 50;
+        this.cleanliness = 50;
     }
 
     feedPet(foodAmount) {
@@ -56,6 +60,57 @@ class VirtualPet {
        this.happiness = this.happiness + happinessAmount;
        this.hunger = this.hunger + exertion;
     }
+
+    changePetHealth(changeHealthType) {
+        
+        let healthAmount = 0
+
+        switch(changeHealthType.toLowerCase()){
+           
+            case "vet": 
+            healthAmount = 20;
+                
+            break;
+            
+            case "carhit":  
+             healthAmount = 0;
+                this.health = 0;
+            break;
+
+            case "hygiene":  
+             healthAmount = 5;
+                
+            break;
+
+            
+
+            default: 
+            break;
+        }
+
+        this.health = healthAmount + this.health 
+    }
+
+
+    waterPet(){
+
+    this.thirst = this.thirst + 10;
+
+    }
+    
+    cleanCage(){
+
+        this.cleanliness = 100;
+    
+    }
+
+    setName(name){
+
+        this.name = name;
+        
+    }
 }
 
 module.exports = VirtualPet;
+
+

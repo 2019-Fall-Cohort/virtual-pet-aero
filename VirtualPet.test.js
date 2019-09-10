@@ -41,4 +41,90 @@ describe("VirtualPet", () => {
             })
     
         })
+        describe("changePetHealth", () => {
+            test(" ", () => {
+                // Arrange
+                
+               const TestVirtualPet =  new VirtualPet();
+    
+               
+                // Act
+
+                const initialHealth = TestVirtualPet.health;
+                
+                TestVirtualPet.changePetHealth("hygiene");
+    
+                //Assert
+             
+                expect(TestVirtualPet.health - initialHealth).toEqual(5);
+                
+                //tests "carhit" case which automatically sets this.health to zero
+                //expect(TestVirtualPet.health).toEqual(0);
+            })
+    
+        })
+
+        describe("waterPet", () => {
+            test(" ", () => {
+                // Arrange
+                
+               const TestVirtualPet =  new VirtualPet();
+    
+               
+                // Act
+
+                const initialThirst = TestVirtualPet.thirst;
+                
+                TestVirtualPet.waterPet();
+    
+                //Assert
+             
+                expect(TestVirtualPet.thirst - initialThirst).toEqual(10);
+                
+                //tests "carhit" case which automatically sets this.health to zero
+                //expect(TestVirtualPet.health).toEqual(0);
+            })
+    
+        })
+
+        describe("cleanCage", () => {
+            test(" ", () => {
+                // Arrange
+                
+               const TestVirtualPet =  new VirtualPet();
+    
+               
+                // Act
+          
+                TestVirtualPet.cleanCage();
+    
+                //Assert
+             
+                expect(TestVirtualPet.cleanliness).toEqual(100);
+                
+                
+            })
+    
+        })
+
+        describe("setName", () => {
+            test(" ", () => {
+                // Arrange
+                
+               const TestVirtualPet =  new VirtualPet();
+    
+               
+                // Act
+          
+                TestVirtualPet.setName("frog");
+    
+                //Assert
+             
+                expect(TestVirtualPet.name).toEqual("frog");
+                
+                
+            })
+    
+        })
+
     })
