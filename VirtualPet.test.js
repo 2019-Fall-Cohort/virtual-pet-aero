@@ -127,4 +127,45 @@ describe("VirtualPet", () => {
     
         })
 
+        describe("setSpecies", () => {
+            test(" ", () => {
+                // Arrange
+                
+               const TestVirtualPet =  new VirtualPet();
+    
+               
+                // Act
+          
+                TestVirtualPet.setSpecies("frog");
+    
+                //Assert
+             
+                expect(TestVirtualPet.species).toEqual("frog");
+                
+                
+            })
+    
+        })
+
+        describe("getStatus", () => {
+            test(" ", () => {
+                // Arrange
+                
+               const TestVirtualPet =  new VirtualPet();
+    
+               
+                // Act
+          
+                TestVirtualPet.getStatus();
+    
+                //Assert
+             
+                expect(TestVirtualPet.name).toEqual("NoName");
+                
+                
+            })
+    
+        })
+        
+
     })

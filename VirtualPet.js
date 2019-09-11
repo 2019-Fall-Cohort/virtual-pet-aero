@@ -1,4 +1,8 @@
+// const input = require("readline-sync");
+
 class VirtualPet {
+
+  
 
     constructor() {
 
@@ -88,7 +92,7 @@ class VirtualPet {
             break;
         }
 
-        this.health = healthAmount + this.health 
+        this.health = healthAmount + this.health;
     }
 
 
@@ -108,6 +112,36 @@ class VirtualPet {
 
         this.name = name;
         
+    }
+
+    setSpecies(species){
+
+        this.species = species;
+    }
+
+    getStatus(){
+
+        const input = require("readline-sync");
+        
+
+
+        const criticalValueHunger = 50;
+
+        console.log("Name = " + this.name);
+        console.log("Species = " + this.species);
+
+        let text = "Hunger = " + this.hunger;
+        console.log( text + Array(20-text.length).join(' ') + Array(this.hunger/2).join('x')); 
+
+        text = "Happiness = " + this.happiness;
+        console.log(text + Array(20-text.length).join(' ') + Array(this.happiness/2).join('x')); 
+        text = "Health = " + this.health;
+        console.log(text + Array(20-text.length).join(' ') + Array(this.health/2).join('x')); 
+        text = "Thirst = " + this.thirst;
+        console.log(text + Array(20-text.length).join(' ') + Array(this.thirst/2).join('x')); 
+        text = "Cleanliness = " + this.cleanliness;
+        console.log(text + Array(20-text.length).join(' ') + Array(this.cleanliness/2).join('x'));
+
     }
 }
 
