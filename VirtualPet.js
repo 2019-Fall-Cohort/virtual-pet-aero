@@ -8,11 +8,17 @@ class VirtualPet {
 
         this.name = "NoName"
         this.species = "elephant"
-        this.hunger = 100;
-        this.happiness = 100;
-        this.health = 100;
-        this.thirst = 50;
-        this.cleanliness = 50;
+        this.hunger = 99;
+        this.happiness = 99;
+        this.health = 99;
+        this.thirst = 49;
+        this.cleanliness = 49;
+        this.exertion = 1;
+    }
+
+    getExertion(){
+
+
     }
 
     feedPet(foodAmount) {
@@ -32,29 +38,30 @@ class VirtualPet {
         }
        
        this.hunger = this.hunger - mealSize
+       this.cleanliness = this.cleanliness - mealSize
+
 
        return mealSize
-        // return this.hunger
-    
+        
     }
     playWithPet(playType) {
         let happinessAmount = 0;
-        let exertion = 0;
+        let energyExpended = 0;
         
             switch(playType.toLowerCase()){
             case "ball": 
                 happinessAmount = 2;
-                exertion = 2;
+                energyExpended = 2;
             break;
             
             case "frisbee":  
                 happinessAmount = 5;
-                exertion = 5;
+                energyExpended = 5;
             break;
 
             case "stick":  
                 happinessAmount = 10;
-                exertion = 10;
+                energyExpended = 10;
             break;
 
             default: 
@@ -62,7 +69,8 @@ class VirtualPet {
         }
        
        this.happiness = this.happiness + happinessAmount;
-       this.hunger = this.hunger + exertion;
+       this.hunger = this.hunger + energyExpended;
+       this.exertion = this.exertion + energyExpended;
     }
 
     changePetHealth(changeHealthType) {
@@ -78,15 +86,13 @@ class VirtualPet {
             
             case "carhit":  
              healthAmount = 0;
-                this.health = 0;
+             this.health = 0;
             break;
 
             case "hygiene":  
              healthAmount = 5;
                 
             break;
-
-            
 
             default: 
             break;
@@ -98,7 +104,11 @@ class VirtualPet {
 
     waterPet(){
 
-    this.thirst = this.thirst + 10;
+    const drink = 10;
+
+    this.thirst = this.thirst + drink;
+    this.cleanliness = this.cleanliness - drink;
+
 
     }
     
@@ -122,25 +132,85 @@ class VirtualPet {
     getStatus(){
 
         const input = require("readline-sync");
-        
+        const ColorConsolePrinter = require("./ColorConsolePrinter");
+        const sendToColorConsolePrinter = new ColorConsolePrinter();
 
 
         const criticalValueHunger = 50;
+        const criticalValueHappiness = 50;
+        const criticalValueHealth = 50;
+        const criticalValueThirst = 50;
+        const criticalValueCleanliness = 50;
+        const criticalValueExertion = 50;
 
         console.log("Name = " + this.name);
         console.log("Species = " + this.species);
 
         let text = "Hunger = " + this.hunger;
-        console.log( text + Array(20-text.length).join(' ') + Array(this.hunger/2).join('x')); 
+        let label = text + Array(20-text.length +1).join(' ');
+        let bar = Array(Math.round(this.hunger/2) + 1).join('x')
 
-        text = "Happiness = " + this.happiness;
-        console.log(text + Array(20-text.length).join(' ') + Array(this.happiness/2).join('x')); 
+        if (this.hunger > criticalValueHunger)
+        {
+            console.log(label + bar); 
+        } else {
+            sendToColorConsolePrinter.printRedToConsole(label + bar); 
+        }
+
+         text = "Happiness = " + this.happiness;
+         label = text + Array(20-text.length +1).join(' ');
+         bar = Array(Math.round(this.happiness/2) + 1).join('x')
+
+        if (this.happiness > criticalValueHappiness)
+        {
+            console.log(label + bar); 
+        } else {
+            sendToColorConsolePrinter.printRedToConsole(label + bar); 
+        }
+        
         text = "Health = " + this.health;
-        console.log(text + Array(20-text.length).join(' ') + Array(this.health/2).join('x')); 
-        text = "Thirst = " + this.thirst;
-        console.log(text + Array(20-text.length).join(' ') + Array(this.thirst/2).join('x')); 
-        text = "Cleanliness = " + this.cleanliness;
-        console.log(text + Array(20-text.length).join(' ') + Array(this.cleanliness/2).join('x'));
+        label = text + Array(20-text.length +1).join(' ');
+        bar = Array(Math.round(this.health/2) + 1).join('x')
+
+       if (this.health > criticalValueHealth)
+       {
+           console.log(label + bar); 
+       } else {
+           sendToColorConsolePrinter.printRedToConsole(label + bar); 
+       }
+
+       text = "Thirst = " + this.thirst;
+        label = text + Array(20-text.length +1).join(' ');
+        bar = Array(Math.round(this.thirst/2) + 1).join('x')
+
+       if (this.thirst > criticalValueThirst)
+       {
+           console.log(label + bar); 
+       } else {
+           sendToColorConsolePrinter.printRedToConsole(label + bar); 
+       }
+
+       text = "Cleanliness = " + this.cleanliness;
+        label = text + Array(20-text.length +1).join(' ');
+        bar = Array(Math.round(this.cleanliness/2) + 1).join('x')
+
+       if (this.cleanliness > criticalValueCleanliness)
+       {
+           console.log(label + bar); 
+       } else {
+           sendToColorConsolePrinter.printRedToConsole(label + bar); 
+       }
+
+       text = "Exertion = " + this.exertion;
+       label = text + Array(20-text.length +1).join(' ');
+       bar = Array(Math.round(this.exertion/2) + 1).join('x')
+
+      if (this.exertion < criticalValueExertion)
+      {
+          console.log(label + bar); 
+      } else {
+          sendToColorConsolePrinter.printRedToConsole(label + bar); 
+      }
 
     }
 }
