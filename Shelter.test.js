@@ -13,11 +13,11 @@ describe("Shelter", () =>{
             TestShelter.populateShelter(3);
         
                         // Assert
-            expect(TestShelter.VirtualPets.length).toEqual(3);
+            expect(TestShelter.virtualPets.length).toEqual(3);
 
         }) 
     
-        
+
     })
 
     describe("Get all pets", () => {
@@ -26,16 +26,22 @@ describe("Shelter", () =>{
             
         
             const TestShelter = new Shelter(3);
-
-            // Act
             
+            // Act
+            const TestVirtualPet = new VirtualPet;
 
-        
+            let testTestShelter = [];
+
+            testTestShelter.push(TestShelter.getAllPets()[0]);
+
+
             //Assert
-            expect(getAllPets).toEqual([TestShelter.pets]);
+            expect(TestShelter.virtualPets[0]).toEqual(testTestShelter[0]);
         })
     })
     
+
+
     describe("List all pet names", () => {
         test("", () => {
             // Arrange
@@ -50,9 +56,9 @@ describe("Shelter", () =>{
             TestVirtualPet2.name = "Phoney Balogna";
             TestVirtualPet3.name = "Santa Clause";
 
-            TestShelter.VirtualPets.push(TestVirtualPet);
-            TestShelter.VirtualPets.push(TestVirtualPet2);
-            TestShelter.VirtualPets.push(TestVirtualPet3);
+            TestShelter.virtualPets.push(TestVirtualPet);
+            TestShelter.virtualPets.push(TestVirtualPet2);
+            TestShelter.virtualPets.push(TestVirtualPet3);
 
             let getPetNames = TestShelter.getPetNames();
             //Assert
@@ -90,11 +96,11 @@ describe("Shelter", () =>{
 
             // Act
             
-            TestShelter.populateShelter()
+            TestShelter.populateShelter(3)
 
             //Assert
 
-            expect(TestShelter.VirtualPets[0].name).toEqual("Omar")
+            expect(TestShelter.virtualPets[0].name).toEqual(expect.not.arrayContaining(["Elton John"]))
 
 
         })
@@ -109,7 +115,7 @@ describe("Shelter", () =>{
     
                 // Act
                 
-                const TestVirtualPet = TestShelter.generatePet();
+                const TestVirtualPet = TestShelter.populateShelter(1);
                 
                 //Assert
     

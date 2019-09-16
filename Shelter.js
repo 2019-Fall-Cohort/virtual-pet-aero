@@ -2,29 +2,26 @@ const VirtualPet = require("./VirtualPet");
 
 class Shelter {
 
-    constructor(petsToGenerate=5) {
+    constructor(petsToGenerate=0) {
 
-        this.VirtualPets =[];    
+        this.virtualPets =[];    
 
         this.populateShelter(petsToGenerate);
         
     }
 
     getAllPets() {
-        let allPets = [];
+         return this.virtualPets;      
+        }
+        
 
-        this.VirtualPets.forEach((pets) => {
-            allPets.push(pets);       
-        })
-        return allPets;
-    }
 
     getPetNames() {
         let petNames = [];
-            pets.forEach((petName) => {
+            this.virtualPets.forEach((petName) => {
             petNames.push(petName.name)
-        })
-        return petNames
+          })
+        return petNames;
     }
 
     getPetStatus(pet, status) {
@@ -67,12 +64,11 @@ class Shelter {
     }
 
     populateShelter(petsToGenerate){
-        let petCount = 0;
-        do {
+        
+        for(let petCount = 0;petCount < petsToGenerate; petCount++)  {
             this.generatePet();
 
-            petCount += 1;
-        } while(petsToGenerate <= petCount);
+        } 
     }
     generatePet(){
         let nameChoices = ["Speedy", "Purty", "Josh", "Spotty", "Wishwash", "Cup", "Chocolate", "Starry Night", "Shithead", "Clock"];
@@ -90,7 +86,7 @@ class Shelter {
 
     }
     pushNewPet(newVirtualPet){
-        this.VirtualPets.push(newVirtualPet);
+        this.virtualPets.push(newVirtualPet);
     }
 }
 
