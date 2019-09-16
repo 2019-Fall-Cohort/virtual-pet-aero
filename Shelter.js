@@ -2,40 +2,28 @@ const VirtualPet = require("./VirtualPet");
 
 class Shelter {
 
-    constructor() {
+    constructor(petsToGenerate=5) {
 
-        this.pets =[];
+        this.VirtualPets =[];    
 
+        this.populateShelter(petsToGenerate);
         
-
     }
 
     getAllPets() {
         let allPets = [];
 
-
-        this.organicPets.forEach((organicPet) => {
-            allPets.push(organicPet);
-            
+        this.VirtualPets.forEach((pets) => {
+            allPets.push(pets);       
         })
-        this.robotPets.forEach((robotPet) => {
-            allPets.push(robotPet);
-            
-        })
-
-
         return allPets;
-
     }
 
     getPetNames() {
         let petNames = [];
-        const allPets = this.getAllPets()
-       
-            allPets.forEach((petName) => {
+            pets.forEach((petName) => {
             petNames.push(petName.name)
         })
-        
         return petNames
     }
 
@@ -78,42 +66,43 @@ class Shelter {
            
     }
 
-    populateShelter(numberOfPets = 1){
-        // let counter = 0
-        // let vPet = []
-        // do{
-        // } while(counter < numberOfPets);
-        //     vPet[counter] = generateOrganicPet();
-        //     counter = counter + 1
-        //     if (counter > numberOfPets) {
-        //         break
-        //     } 
-        
+    populateShelter(petsToGenerate){
+        let petCount = 0;
+        do {
+            this.generatePet();
+
+            petCount += 1;
+        } while(petsToGenerate <= petCount);
+    }
+    generatePet(){
+        let nameChoices = ["Speedy", "Purty", "Josh", "Spotty", "Wishwash", "Cup", "Chocolate", "Starry Night", "Shithead", "Clock"];
+        let name = nameChoices[getRandomElement(nameChoices.length)];
+        let speciesChoices = ["Cat", "Dog", "Hamster", "Bird", "Lion", "Turtle", "Horse"];
+        let species = speciesChoices[getRandomElement(nameChoices.length)]; 
+        let hunger = randomStat();
+        let happiness = randomStat();
+        let health = randomStat();
+        let thirst = randomStat();
+        let cleanliness = randomStat();
+
+        const newVirtualPet = new VirtualPet(name, species, hunger, happiness, health, thirst, cleanliness);
+        this.pushNewPet(newVirtualPet);
 
     }
-    generateOrganicPet(){
-        
-        let nameChoices = ["Speedy", "Purty", "Josh", "Spotty", "Wishwash", "Cup", "Chocolate", "Starry Night", "Shithead",];
-        let name = nameChoices[getRandomElement(nameChoices.length)] //[getRandomElement(7)];
-        let speciesChoices = ["Cat", "Dog", "Hamster", "Bird", "Lion", "Turtle"];
-        let species = speciesChoices[getRandomElement(nameChoices.length)]; //[getRandomElement(4)];
-        let hunger = Math.floor(90 * Math.random()) + 10;
-        let happiness = Math.floor(90 * Math.random()) + 10;
-        let health = Math.floor(90 * Math.random()) + 10;
-        let thirst = Math.floor(90 * Math.random()) + 10;
-        let cleanliness = Math.floor(90 * Math.random()) + 10;
-
-        const VirtualPet = new VirtualPet(name, species, hunger, happiness, health, thirst, cleanliness);
-        return VirtualPet;
-
-        }
+    pushNewPet(newVirtualPet){
+        this.VirtualPets.push(newVirtualPet);
+    }
 }
 
-function getRandomElement(max){
+
+const getRandomElement = (max) => {
     randomElement = Math.floor(max * Math.random());
- 
     return randomElement;
-}
+    }
+const randomStat = () => { Math.floor(90 * Math.random()) + 10} ; 
+
+
+
 
 module.exports = Shelter;
 

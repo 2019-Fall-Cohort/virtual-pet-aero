@@ -4,15 +4,15 @@ class VirtualPet {
 
   
 
-    constructor() {
+    constructor(name,species,hunger,happiness,health,thirst,cleanliness) {
 
-        this.name = "NoName"
-        this.species = "elephant"
-        this.hunger = 99;
-        this.happiness = 99;
-        this.health = 99;
-        this.thirst = 49;
-        this.cleanliness = 49;
+        this.name = name;
+        this.species = species;
+        this.hunger = hunger;
+        this.happiness = happiness;
+        this.health = health;
+        this.thirst = thirst;
+        this.cleanliness = cleanliness;
         this.exertion = 1;
     }
 

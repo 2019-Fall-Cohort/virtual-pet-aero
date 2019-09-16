@@ -2,51 +2,37 @@ const Shelter = require("./Shelter");
 const VirtualPet = require("./VirtualPet");
 
 describe("Shelter", () =>{
-    describe("Adopt a pet", () => {
-        test("", ()=> {
+    describe("Pets in shelter", () => {
+        test("3 Pets in shelter", ()=> {
 
             // Arrange
-            const TestVirtualPet = new VirtualPet();
-            const TestVirtualPet2 = new VirtualPet();
-
             const TestShelter = new Shelter();
-            // const testDumb = 7
 
             // Act
-            TestShelter.pets.push(TestVirtualPet);
-            TestShelter.pets.push(TestVirtualPet2);
-            // TestShelter.organicPets.push(testDumb)
-            // TestShelter.organicPets.push(2)
-            // TestShelter.organicPets.push(5)
+            
+            TestShelter.populateShelter(3);
         
                         // Assert
-            expect(TestShelter.pets).toEqual([TestVirtualPet, TestVirtualPet2]);
+            expect(TestShelter.VirtualPets.length).toEqual(3);
 
         }) 
     
+        
     })
 
     describe("Get all pets", () => {
-        test("", () => {
+        test("Print all pets in shelter", () => {
             // Arrange
-            const TestVirtualPet = new VirtualPet();
-            const TestVirtualPet2 = new VirtualPet();
-            const TestVirtualPet3 = new VirtualPet();
             
-            const TestShelter = new Shelter();
+        
+            const TestShelter = new Shelter(3);
 
             // Act
-            TestVirtualPet.name = "Hannah";
-            TestVirtualPet2.name = "Phoney Balogna";
-            TestVirtualPet3.name = "Santa Clause";
+            
 
-            TestShelter.pets.push(TestVirtualPet);
-            TestShelter.robotPets.push(TestVirtualPet2);
-            TestShelter.robotPets.push(TestVirtualPet3);
-
-            let getAllPets = TestShelter.getAllPets();
+        
             //Assert
-            expect(getAllPets).toEqual([TestVirtualPet, TestVirtualPet2, TestVirtualPet3]);
+            expect(getAllPets).toEqual([TestShelter.pets]);
         })
     })
     
@@ -64,9 +50,9 @@ describe("Shelter", () =>{
             TestVirtualPet2.name = "Phoney Balogna";
             TestVirtualPet3.name = "Santa Clause";
 
-            TestShelter.pets.push(TestVirtualPet);
-            TestShelter.robotPets.push(TestVirtualPet2);
-            TestShelter.robotPets.push(TestVirtualPet3);
+            TestShelter.VirtualPets.push(TestVirtualPet);
+            TestShelter.VirtualPets.push(TestVirtualPet2);
+            TestShelter.VirtualPets.push(TestVirtualPet3);
 
             let getPetNames = TestShelter.getPetNames();
             //Assert
@@ -92,7 +78,7 @@ describe("Shelter", () =>{
 
 
             // Assert
-            expect(TestShelter.getPetStatus(pet, "aoweurtf")).toEqual("You died");
+            expect(TestShelter.getPetStatus(pet, "hunger")).toEqual(10);
 
     })
 
@@ -108,7 +94,7 @@ describe("Shelter", () =>{
 
             //Assert
 
-            expect(TestShelter.pets[0].name).toEqual("Omar")
+            expect(TestShelter.VirtualPets[0].name).toEqual("Omar")
 
 
         })
@@ -118,15 +104,13 @@ describe("Shelter", () =>{
                // Arrange
                 
                const TestShelter =  new Shelter();
-               const TestShelter2 = new Shelter();
-
+               
                const TestVirtualPet2 = new VirtualPet;
     
                 // Act
                 
-                const TestVirtualPet = TestShelter.generateOrganicPet();
+                const TestVirtualPet = TestShelter.generatePet();
                 
-    
                 //Assert
     
                 expect(TestVirtualPet === TestVirtualPet2).toBeFalsy();
