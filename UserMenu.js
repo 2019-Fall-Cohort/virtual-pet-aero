@@ -1,10 +1,11 @@
 const input = require("readline-sync");
+const Shelter = require("./Shelter");
 
 class UserMenu{
     constructor(){
         
-     
-    
+        this.localShelter = new Shelter;
+        this.localShelter.populateShelter(5);
     }
 
     getStarted(){
@@ -24,7 +25,7 @@ class UserMenu{
         if (userInput == "1"){
             console.log("Welcome to the shelter!");
             console.log(" ");
-            //visitShelter();
+            this.visitShelter();
         } else{
             console.log("Not a valid input!");
             console.log("Type '1' to visit the shelter!");
@@ -85,7 +86,17 @@ class UserMenu{
 
     visitShelter(){
 
-        
+    
+
+     
+
+        for (let i=0;i<=this.localShelter.virtualPets.length-1;i++){
+            console.log()
+            console.log("Pet ID: " + this.localShelter.virtualPets[i].petID);
+            console.log("Name: " + this.localShelter.virtualPets[i].name);
+            console.log("species: " + this.localShelter.virtualPets[i].species);
+        }
+   
     }
 
 
