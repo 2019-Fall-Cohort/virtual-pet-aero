@@ -3,8 +3,8 @@ class UserQuery{
 
     AskQuestion(QuestionForUser){
 
- //       let answerToQuestion = input.question(QuestionForUser);
-        return QuestionForUser;
+        let answerToQuestion = input.question(QuestionForUser);
+        return answerToQuestion;
     }
 
 
