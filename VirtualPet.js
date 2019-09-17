@@ -102,7 +102,6 @@ class VirtualPet {
         this.health = healthAmount + this.health;
     }
 
-
     waterPet(){
 
     const drink = 10;

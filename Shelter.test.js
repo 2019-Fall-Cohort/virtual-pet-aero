@@ -92,11 +92,11 @@ describe("Shelter", () =>{
         test("Shelter contains no pets with name value of null", () => {
             // Arrange
             
-           const TestShelter =  new Shelter();
+           const TestShelter =  new Shelter(3);
 
             // Act
             
-            TestShelter.populateShelter(3)
+            //TestShelter.populateShelter(3)
 
             //Assert
             console.log(TestShelter.virtualPets)
