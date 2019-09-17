@@ -71,17 +71,19 @@ class Shelter {
         } 
     }
     generatePet(){
+        
+        let petId = idArray[getRandomElement(idArray.length)]; 
         let nameChoices = ["Speedy", "Purty", "Josh", "Spotty", "Wishwash", "Cup", "Chocolate", "Starry Night", "Shithead", "Clock"];
         let name = nameChoices[getRandomElement(nameChoices.length)];
         let speciesChoices = ["Cat", "Dog", "Hamster", "Bird", "Lion", "Turtle", "Horse"];
-        let species = speciesChoices[getRandomElement(nameChoices.length)]; 
+        let species = speciesChoices[getRandomElement(speciesChoices.length)]; 
         let hunger = randomStat();
         let happiness = randomStat();
         let health = randomStat();
         let thirst = randomStat();
         let cleanliness = randomStat();
 
-        const newVirtualPet = new VirtualPet(name, species, hunger, happiness, health, thirst, cleanliness);
+        const newVirtualPet = new VirtualPet(petId, name, species, hunger, happiness, health, thirst, cleanliness);
         this.pushNewPet(newVirtualPet);
 
     }
@@ -97,7 +99,10 @@ const getRandomElement = (max) => {
     }
 const randomStat = () => { Math.floor(90 * Math.random()) + 10} ; 
 
-
+const setPetId = (idLength) => {
+    let idArray = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","1","2","3","4","5","6","7","8","9","0"];
+    let petId = idArray[getRandomElement(idArray.length)];
+}
 
 
 module.exports = Shelter;
