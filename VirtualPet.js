@@ -22,29 +22,29 @@ class VirtualPet {
 
     }
 
-    feedPet(foodAmount) {
-        let mealSize = 0
-                switch(foodAmount.toLowerCase()){
-            case "treat": mealSize = 2;
-            break;
+    // feedPet(foodAmount) {
+    //     let mealSize = 0
+    //             switch(foodAmount.toLowerCase()){
+    //         case "treat": mealSize = 2;
+    //         break;
             
-            case "snack": mealSize = 5;
-            break;
+    //         case "snack": mealSize = 5;
+    //         break;
 
-            case "steak": mealSize = 10;
-            break;
+    //         case "steak": mealSize = 10;
+    //         break;
 
-            default: 
-            break;
-        }
+    //         default: 
+    //         break;
+    //     }
        
-       this.hunger = this.hunger - mealSize
-       this.cleanliness = this.cleanliness - mealSize
+    //    this.hunger = this.hunger - mealSize
+    //    this.cleanliness = this.cleanliness - mealSize
 
 
-       return mealSize
+    //    return mealSize
         
-    }
+    // }
     playWithPet(playType) {
         let happinessAmount = 0;
         let energyExpended = 0;
