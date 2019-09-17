@@ -4,8 +4,9 @@ class VirtualPet {
 
   
 
-    constructor(name = "NoName",species= "Rock",hunger= 100,happiness = 0,health = 100,thirst = 0,cleanliness = 100) {
+    constructor(petID, name = "NoName",species= "Rock",hunger= 100,happiness = 0,health = 100,thirst = 0,cleanliness = 100) {
 
+        this.petID = petID;
         this.name = name;
         this.species = species;
         this.hunger = hunger;
@@ -100,7 +101,6 @@ class VirtualPet {
 
         this.health = healthAmount + this.health;
     }
-
 
     waterPet(){
 
@@ -212,6 +212,15 @@ class VirtualPet {
           sendToColorConsolePrinter.printRedToConsole(label + bar); 
       }
 
+    }
+
+    tick(tickLength){
+
+
+        this.happiness = this.happiness - tickLength;
+        this.health = this.health - tickLength;
+        this.thirst = this.thirst - tickLength;
+        this.cleanliness = this.cleanliness - tickLength;
     }
 }
 

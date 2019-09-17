@@ -89,19 +89,19 @@ describe("Shelter", () =>{
     })
 
     describe("Populate Shelter with Pets", () => {
-        test(" ", () => {
+        test("Shelter contains no pets with name value of null", () => {
             // Arrange
             
-           const TestShelter =  new Shelter();
+           const TestShelter =  new Shelter(3);
 
             // Act
             
-            TestShelter.populateShelter(3)
+            //TestShelter.populateShelter(3)
 
             //Assert
-
-            expect(TestShelter.virtualPets[0].name).toEqual(expect.not.arrayContaining(["Elton John"]))
-
+            console.log(TestShelter.virtualPets)
+            expect(TestShelter.virtualPets[0].name).toEqual(expect.not.arrayContaining([null]))
+            
 
         })
     })
