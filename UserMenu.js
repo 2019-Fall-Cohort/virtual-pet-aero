@@ -71,7 +71,8 @@ class UserMenu{
 
             
             userInput = input.question("What would you like to do? ");
-            
+            let whichPet;
+
             if (userInput >= 1 && userInput <= 10){
                 //Perform Action
             } else if (userInput.toLowerCase() != "exit") {
@@ -84,14 +85,64 @@ class UserMenu{
                 break;
 
             case "2": this.visitShelter();
-                      const whichPet = this.identifyPets("Which pet's name would you like to change?");
-                      userInput = input.question("What is the pet's new name? ");
-                      this.localShelter.virtualPets[whichPet].name = userInput;
+                    whichPet = this.identifyPets("Which pet's name would you like to change? ");
+                    userInput = input.question("What is the pet's new name? ");
+                    this.localShelter.virtualPets[whichPet].name = userInput;
+                break;
+
+            case "3": this.visitShelter();
+                    whichPet = this.identifyPets("Which pet would you like to feed? ");
+                    userInput = input.question("What would you like to feed it ('treat' OR 'snack' OR 'steak') ");
+                    if (userInput.toLowerCase() === ("treat" || "snack" || "steak")){ 
+                    this.localShelter.virtualPets[whichPet].feedPet(userInput);
+                    } 
+                    else {
+                        console.log();
+                        console.log("Not a valid meal!");
+                        console.log();
+                    }
+                break;
+
+            case "4": this.visitShelter();
+                whichPet = this.identifyPets("Which pet would you like to water? ");
+                this.localShelter.virtualPets[whichPet].waterPet();
+                break;
+        
+            case "5": this.visitShelter();
+                whichPet = this.identifyPets("Which pet would you like to play with? ");
+                userInput = input.question("What toy would you like to use ('ball' OR 'frisbee' OR 'stick') ");
+                if (userInput.toLowerCase() === "ball" || "frisbee" || "stick"){ 
+                    this.localShelter.virtualPets[whichPet].playWithPet(userInput);
+                } else {
+                    console.log("Not a valid toy!");
+                    console.log();
+                }
+                break;
+
+            case "6": this.visitShelter();
+                whichPet = this.identifyPets("Which pet's cage would you like to clean? ");
+                this.localShelter.virtualPets[whichPet].cleanCage();
                 break;
             
+            case "7": this.visitShelter();
+            whichPet = this.identifyPets("Which pet would you like to take to the vet? ");
+            this.localShelter.virtualPets[whichPet].changePetHealth("vet");
+            console.log(whichPet + "feels better now!");
+            console.log();
+            break;
+
+            case "8": this.visitShelter();
+            whichPet = this.identifyPets("Which pet would you like to clean or bathe? ");
+            this.localShelter.virtualPets[whichPet].changePetHealth("hygiene");
+            console.log(whichPet + "feels better now!");
+            console.log();
+                
             case "9": this.visitShelter();
-            // default:
-            //     break;
+                break;
+
+            case "10": this.visitShelter(true);
+                break;
+
         }
 
          } while (userInput.toLowerCase() != "exit"); 
@@ -99,13 +150,24 @@ class UserMenu{
 
     }
 
-    visitShelter(){
+    visitShelter(showStat = false){
 
         for (let i=0;i<=this.localShelter.virtualPets.length-1;i++){
             console.log()
             console.log("Pet ID: " + this.localShelter.virtualPets[i].petID);
             console.log("Name: " + this.localShelter.virtualPets[i].name);
             console.log("species: " + this.localShelter.virtualPets[i].species);
+        
+            if (showStat){
+            console.log("Hunger: " + this.localShelter.virtualPets[i].hunger);
+            console.log("Happiness: " + this.localShelter.virtualPets[i].happiness);
+            console.log("Health " + this.localShelter.virtualPets[i].health);
+            console.log("Thirst: " + this.localShelter.virtualPets[i].thirst);
+            console.log("Cleanliness: " + this.localShelter.virtualPets[i].cleanliness);
+            console.log("Exertion: " + this.localShelter.virtualPets[i].exertion);
+
+            }
+        
         }
    
     }
@@ -130,6 +192,8 @@ class UserMenu{
         console.log();}
         
     }
+
+    feedPet(){}
 
 
 
