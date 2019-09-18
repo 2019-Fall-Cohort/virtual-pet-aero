@@ -91,8 +91,9 @@ class Shelter {
         let health = getRandomStat();
         let thirst = getRandomStat();
         let cleanliness = getRandomStat();
+        let exertion = getRandomStat();
 
-        const newOrganicVirtualPet = new OrganicVirtualPet(hunger, thirst, cleanliness, petID, name, species, happiness, health,);
+        const newOrganicVirtualPet = new OrganicVirtualPet(hunger, thirst, exertion, cleanliness, petID, name, species, happiness, health,);
         this.pushNewPet(newOrganicVirtualPet);
 
     }
