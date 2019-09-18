@@ -4,14 +4,16 @@ class VirtualPet {
 
   
 
-    constructor(petID, name = "NoName",species= "Rock",happiness = 0,health = 100, type= "organic") {
+    constructor(petID, name = "NoName",species= "Rock",hunger= 100,happiness = 0,health = 100,thirst = 0,cleanliness = 100) {
 
         this.petID = petID;
         this.name = name;
         this.species = species;
+        this.hunger = hunger;
         this.happiness = happiness;
         this.health = health;
-        this.type = type;
+        this.thirst = thirst;
+        this.cleanliness = cleanliness;
         this.exertion = 1;
     }
 
@@ -20,29 +22,29 @@ class VirtualPet {
 
     }
 
-    // feedPet(foodAmount) {
-    //     let mealSize = 0
-    //             switch(foodAmount.toLowerCase()){
-    //         case "treat": mealSize = 2;
-    //         break;
+    feedPet(foodAmount) {
+        let mealSize = 0
+                switch(foodAmount.toLowerCase()){
+            case "treat": mealSize = 2;
+            break;
             
-    //         case "snack": mealSize = 5;
-    //         break;
+            case "snack": mealSize = 5;
+            break;
 
-    //         case "steak": mealSize = 10;
-    //         break;
+            case "steak": mealSize = 10;
+            break;
 
-    //         default: 
-    //         break;
-    //     }
+            default: 
+            break;
+        }
        
-    //    this.hunger = this.hunger - mealSize
-    //    this.cleanliness = this.cleanliness - mealSize
+       this.hunger = this.hunger - mealSize
+       this.cleanliness = this.cleanliness - mealSize
 
 
-    //    return mealSize
+       return mealSize
         
-    // }
+    }
     playWithPet(playType) {
         let happinessAmount = 0;
         let energyExpended = 0;
@@ -100,6 +102,21 @@ class VirtualPet {
         this.health = healthAmount + this.health;
     }
 
+    waterPet(){
+
+    const drink = 10;
+
+    this.thirst = this.thirst + drink;
+    this.cleanliness = this.cleanliness - drink;
+
+
+    }
+    
+    cleanCage(){
+
+        this.cleanliness = 100;
+    
+    }
 
     setName(name){
 

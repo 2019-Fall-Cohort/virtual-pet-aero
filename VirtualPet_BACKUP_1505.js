@@ -100,6 +100,24 @@ class VirtualPet {
         this.health = healthAmount + this.health;
     }
 
+<<<<<<< HEAD
+    waterPet(){
+
+    const drink = 10;
+
+    this.thirst = this.thirst - drink;
+    this.cleanliness = this.cleanliness - drink;
+
+
+    }
+    
+    cleanCage(){
+
+        this.cleanliness = 100;
+    
+    }
+=======
+>>>>>>> 1f712baa30a05995666a626c4663aa03ab1d9aab
 
     setName(name){
 
