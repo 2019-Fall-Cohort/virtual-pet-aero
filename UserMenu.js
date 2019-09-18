@@ -40,6 +40,7 @@ class UserMenu{
 
         do{
 
+            console.log();
             console.log("Interact with your pet!");
             console.log("-----------------------");
             console.log(" ");
@@ -61,11 +62,12 @@ class UserMenu{
             console.log();
             console.log("8. Clean or bathe your pet");
             console.log();
-            console.log("9. List my pets' names");
+            console.log("9. List my pets");
             console.log();
-            console.log("10. List my pet's stats");
+            console.log("10. List my pets' stats");
             console.log();
             console.log("Type 'exit' to exit game");
+            console.log();
 
             
             userInput = input.question("What would you like to do? ");
@@ -77,7 +79,20 @@ class UserMenu{
                 console.log();
             }
     
+            switch (userInput) {
+            case "1": this.adoptPet();
+                break;
 
+            case "2": this.visitShelter();
+                      const whichPet = this.identifyPets("Which pet's name would you like to change?");
+                      userInput = input.question("What is the pet's new name? ");
+                      this.localShelter.virtualPets[whichPet].name = userInput;
+                break;
+            
+            case "9": this.visitShelter();
+            // default:
+            //     break;
+        }
 
          } while (userInput.toLowerCase() != "exit"); 
 
@@ -85,10 +100,6 @@ class UserMenu{
     }
 
     visitShelter(){
-
-    
-
-     
 
         for (let i=0;i<=this.localShelter.virtualPets.length-1;i++){
             console.log()
@@ -99,7 +110,26 @@ class UserMenu{
    
     }
 
+    identifyPets(SelectedQuestion){
 
+        let userInput = input.question(SelectedQuestion);
+        let match = false;
+        let matchIndex;
+
+        for (let i=0;i<=this.localShelter.virtualPets.length-1;i++){   
+           if (userInput.toLowerCase() == this.localShelter.virtualPets[i].petID){
+            match = true;
+            matchIndex = i;
+            break;
+           }
+        }
+        if (match) {
+            return matchIndex;
+        }else
+        { console.log("Not a valid PetID");
+        console.log();}
+        
+    }
 
 
 
@@ -110,7 +140,32 @@ class UserMenu{
         return message;
     }
 
+    adoptPet(){
 
+        this.visitShelter() ;
+
+        let userInput = input.question("Which pet would you like to adopt? ");
+            
+        let match = false;
+        let matchIndex;
+
+        for (let i=0;i<=this.localShelter.virtualPets.length-1;i++){   
+           if (userInput.toLowerCase() == this.localShelter.virtualPets[i].petID){
+            match = true;
+            matchIndex = i;
+            break;
+           }
+        }
+        // console.log("Match Index " + matchIndex)
+         if (match) {
+            this.localShelter.virtualPets.splice(matchIndex,1);
+        }else
+        { console.log("Not a valid PetID");
+        console.log();}
+           
+
+
+    }
 
 
 
