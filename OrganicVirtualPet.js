@@ -1,13 +1,17 @@
-class OrganicVirtualPet{
+const VirtualPet = require("./VirtualPet")
+
+class OrganicVirtualPet extends VirtualPet{
 
 
 
-    constructor(hunger, thirst, exertion, cleanliness){
-
+    constructor(hunger = 90, thirst = 90, exertion = 90, cleanliness = 90, petID, name, species, happiness, health, type){
+        super(petID, name = "NoName",species= "Rock",happiness = 0,health = 100, type= "organic");
+        
         this.hunger = hunger;
         this.thirst = thirst;
         this.exertion = exertion;
         this.cleanliness = cleanliness;
+        
 
     }
     feedPet(foodAmount) {
@@ -26,14 +30,20 @@ class OrganicVirtualPet{
             break;
         }
        
-       this.hunger = this.hunger + mealSize     
-       this.cleanliness = this.cleanliness - mealSize
+            this.hunger = this.hunger + mealSize;     
+            this.cleanliness = this.cleanliness - mealSize;
 
-       if(this.hunger > 100){ 
-          this.hunger = 100;
+
+            if(this.hunger > 100){ 
+                this.hunger = 100;
        }
 
-       return mealSize
+             if(this.cleanliness < 0){
+                this.cleanliness = 0;
+       }
+
+       console.log(`You fed ${this.name} a ${foodAmount}!`);
+       return mealSize;
         
     }
     waterPet(){
@@ -46,8 +56,24 @@ class OrganicVirtualPet{
         if(this.thirst > 100){
             this.thirst = 100;
         }
-    }        
+        console.log(`You watered ${this.name}!`);
 
+
+    }        
+    cleanCage(){
+
+        const clean = 20;
+
+        this.cleanliness = this.cleanliness + clean;
+
+        if(this.cleanliness > 100){
+            this.cleanliness = 100;
+
+        console.log(`You cleaned ${this.name}'s filthy cage.`); 
+        }
+    }
 }
+    
+
 
 module.exports = OrganicVirtualPet

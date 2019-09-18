@@ -4,16 +4,14 @@ class VirtualPet {
 
   
 
-    constructor(petID, name = "NoName",species= "Rock",hunger= 100,happiness = 0,health = 100,thirst = 0,cleanliness = 100) {
+    constructor(petID, name = "NoName",species= "Rock",happiness = 0,health = 100, type= "organic") {
 
         this.petID = petID;
         this.name = name;
         this.species = species;
-        this.hunger = hunger;
         this.happiness = happiness;
         this.health = health;
-        this.thirst = thirst;
-        this.cleanliness = cleanliness;
+        this.type = type;
         this.exertion = 1;
     }
 
@@ -102,21 +100,6 @@ class VirtualPet {
         this.health = healthAmount + this.health;
     }
 
-    waterPet(){
-
-    const drink = 10;
-
-    this.thirst = this.thirst + drink;
-    this.cleanliness = this.cleanliness - drink;
-
-
-    }
-    
-    cleanCage(){
-
-        this.cleanliness = 100;
-    
-    }
 
     setName(name){
 
