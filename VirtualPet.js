@@ -106,7 +106,7 @@ class VirtualPet {
 
     const drink = 10;
 
-    this.thirst = this.thirst + drink;
+    this.thirst = this.thirst - drink;
     this.cleanliness = this.cleanliness - drink;
 
 
