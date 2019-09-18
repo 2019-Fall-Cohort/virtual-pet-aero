@@ -4,7 +4,7 @@ class VirtualPet {
 
   
 
-    constructor(petID, name = "NoName",species= "Rock",happiness = 0,health = 100, type= "organic") {
+    constructor(petID, name, species , happiness, health, type) {
 
         this.petID = petID;
         this.name = name;

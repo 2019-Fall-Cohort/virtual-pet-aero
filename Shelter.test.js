@@ -3,17 +3,19 @@ const VirtualPet = require("./VirtualPet");
 
 describe("Shelter", () =>{
     describe("Pets in shelter", () => {
-        test("3 Pets in shelter", ()=> {
+        test("5 Pets in shelter", ()=> {
 
             // Arrange
             const TestShelter = new Shelter();
 
             // Act
             
-            TestShelter.populateShelter(3);
+            TestShelter.populateShelter(5);
+
+            console.log(TestShelter.virtualPets);
         
                         // Assert
-            expect(TestShelter.virtualPets.length).toEqual(3);
+            expect(TestShelter.virtualPets.length).toEqual(5);
 
         }) 
     

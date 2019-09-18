@@ -4,8 +4,8 @@ class OrganicVirtualPet extends VirtualPet{
 
 
 
-    constructor(hunger = 90, thirst = 90, exertion = 90, cleanliness = 90, petID, name, species, happiness, health, type){
-        super(petID, name = "NoName",species= "Rock",happiness = 0,health = 100, type= "organic");
+    constructor(hunger, thirst, exertion, cleanliness, petID, name, species, happiness, health, type){
+        super(petID, name, species,happiness, health, type= "organic");
         
         this.hunger = hunger;
         this.thirst = thirst;

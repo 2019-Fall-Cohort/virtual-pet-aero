@@ -1,4 +1,7 @@
-const VirtualPet = require("./VirtualPet"); 
+const VirtualPet = require("./VirtualPet");
+const OrganicVirtualPet = require("./OrganicVirtualPet");
+const RoboticVirtualPet = require("./RoboticVirtualPet");
+ 
 
 class Shelter {
 
@@ -66,13 +69,19 @@ class Shelter {
     populateShelter(petsToGenerate){
         
         for(let petCount = 0;petCount < petsToGenerate; petCount++)  {
-            this.generatePet();
 
+        let flip = flipCoin()
+        if(flip == "tails"){
+        this.generateOrganicVirtualPet();
+        } else {
+            this.generateRoboticVirtualPet();
+            }
+            
         } 
     }
-    generatePet(){
+    generateOrganicVirtualPet(){
         
-        let petId = generatePetId(5); 
+        let petID = generatePetId(5); 
         let nameChoices = ["Speedy", "Purty", "Josh", "Spotty", "Wishwash", "Cup", "Chocolate", "Starry Night", "Shithead", "Clock"];
         let name = nameChoices[getRandomElement(nameChoices.length)];
         let speciesChoices = ["Cat", "Dog", "Hamster", "Bird", "Lion", "Turtle", "Horse"];
@@ -83,8 +92,24 @@ class Shelter {
         let thirst = getRandomStat();
         let cleanliness = getRandomStat();
 
-        const newVirtualPet = new VirtualPet(petId, name, species, hunger, happiness, health, thirst, cleanliness);
-        this.pushNewPet(newVirtualPet);
+        const newOrganicVirtualPet = new OrganicVirtualPet(hunger, thirst, cleanliness, petID, name, species, happiness, health,);
+        this.pushNewPet(newOrganicVirtualPet);
+
+    }
+    generateRoboticVirtualPet(){
+        
+        let petID = generatePetId(5); 
+        let nameChoices = ["C3PO", "version 12.23", "Mr. Shiny", "Yeeeaaahhh", "Tokyo", "Dell"];
+        let name = nameChoices[getRandomElement(nameChoices.length)];
+        let speciesChoices = ["Toaster", "Low-Powered Refridgerator", "Robot Mouse", "Fire Alarm"];
+        let species = speciesChoices[getRandomElement(speciesChoices.length)]; 
+        let happiness = getRandomStat();
+        let health = getRandomStat();
+        let batteryPower = getRandomStat();
+        let maintainance = getRandomStat();
+
+        const newRoboticVirtualPet = new RoboticVirtualPet(batteryPower, maintainance, petID, name, species, happiness, health,);
+        this.pushNewPet(newRoboticVirtualPet);
 
     }
     pushNewPet(newVirtualPet){
@@ -110,7 +135,19 @@ const generatePetId = (idLength) => {
         }   
     return petId;
 }
+const flipCoin = () => {
+    let result 
+    let flip = Math.floor(Math.random() * 2)
 
+    if (flip == 0) {
+        result = "heads";
+        return result
+    }
+    else {
+        result = "tails";
+        return result
+    }
+}
 
 module.exports = Shelter;
 

@@ -4,8 +4,8 @@ class RoboticVirtualPet extends VirtualPet{
 
 
 
-    constructor(batteryPower = 90, maintenance = 90, petID, name, species, happiness, health, type){
-        super(petID, name = "NoName",species= "Toaster",happiness = 0,health = 100, type = "robotic");
+    constructor(batteryPower, maintenance, petID, name, species, happiness, health, type){
+        super(petID, name,species, happiness, health, type = "robotic");
         
         this.batteryPower = batteryPower;
         this.maintenance = maintenance;
