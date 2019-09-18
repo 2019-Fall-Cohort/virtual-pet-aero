@@ -71,6 +71,7 @@ class UserMenu{
 
             
             userInput = input.question("What would you like to do? ");
+            let whichPet;
             
             if (userInput >= 1 && userInput <= 10){
                 //Perform Action
@@ -84,14 +85,23 @@ class UserMenu{
                 break;
 
             case "2": this.visitShelter();
-                      const whichPet = this.identifyPets("Which pet's name would you like to change?");
-                      userInput = input.question("What is the pet's new name? ");
-                      this.localShelter.virtualPets[whichPet].name = userInput;
+                    whichPet = this.identifyPets("Which pet's name would you like to change?");
+                    userInput = input.question("What is the pet's new name? ");
+                    this.localShelter.virtualPets[whichPet].name = userInput;
+                break;
+
+            case "3": this.visitShelter();
+                    whichPet = this.identifyPets("Which pet would you like to feed?");
+                    userInput = input.question("What would you like to feed it ('treat' OR 'snack' OR 'steak') ");
+                    this.localShelter.virtualPets[whichPet].feedPet(userInput);
                 break;
             
             case "9": this.visitShelter();
-            // default:
-            //     break;
+                break;
+
+            case "10": this.visitShelter(true);
+                break;
+
         }
 
          } while (userInput.toLowerCase() != "exit"); 
@@ -99,13 +109,24 @@ class UserMenu{
 
     }
 
-    visitShelter(){
+    visitShelter(showStat = false){
 
         for (let i=0;i<=this.localShelter.virtualPets.length-1;i++){
             console.log()
             console.log("Pet ID: " + this.localShelter.virtualPets[i].petID);
             console.log("Name: " + this.localShelter.virtualPets[i].name);
             console.log("species: " + this.localShelter.virtualPets[i].species);
+        
+            if (showStat){
+            console.log("Hunger: " + this.localShelter.virtualPets[i].hunger);
+            console.log("Happiness: " + this.localShelter.virtualPets[i].happiness);
+            console.log("Health " + this.localShelter.virtualPets[i].health);
+            console.log("Thirst: " + this.localShelter.virtualPets[i].thirst);
+            console.log("Cleanliness: " + this.localShelter.virtualPets[i].cleanliness);
+            console.log("Exertion: " + this.localShelter.virtualPets[i].exertion);
+
+            }
+        
         }
    
     }
@@ -130,6 +151,8 @@ class UserMenu{
         console.log();}
         
     }
+
+    feedPet(){}
 
 
 
