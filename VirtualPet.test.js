@@ -1,31 +1,16 @@
-// const TestRunner = require("jest-runner");
 const VirtualPet = require("./VirtualPet");
+const OrganicVirtualPet = require("./OrganicVirtualPet");
+const RoboticVirtualPet = require("./RoboticVirtualPet");
+
+
 
 describe("VirtualPet", () => {
-    describe("feedPet", () => {
-        test(" ", () => {
-            // Arrange
-            
-           const TestVirtualPet =  new VirtualPet();
-
-            // Act
-            
-            const initialHunger = TestVirtualPet.hunger;
-            TestVirtualPet.feedPet("steak");
-
-            //Assert
-         //   expect(TestVirtualPet.hunger).toEqual(98);
-            expect(initialHunger - TestVirtualPet.hunger).toEqual(10)
-        })
-
-    })
-
 
         describe("playWithPet", () => {
             test(" ", () => {
                 // Arrange
                 
-               const TestVirtualPet =  new VirtualPet();
+               const TestVirtualPet =  new VirtualPet("abc123","fido","dog",50,50,"organic");
     
                
                 // Act
@@ -37,7 +22,7 @@ describe("VirtualPet", () => {
                 //Assert
              
                 expect(TestVirtualPet.happiness - initialHappiness).toEqual(5);
-                expect(TestVirtualPet.hunger - initialHunger).toEqual(5);
+              
             })
     
         })
@@ -45,7 +30,7 @@ describe("VirtualPet", () => {
             test(" ", () => {
                 // Arrange
                 
-               const TestVirtualPet =  new VirtualPet();
+               const TestVirtualPet =  new VirtualPet("abc123","fido","dog",50,50,"organic");
     
                
                 // Act
@@ -58,60 +43,17 @@ describe("VirtualPet", () => {
              
                 expect(TestVirtualPet.health - initialHealth).toEqual(5);
                 
-                //tests "carhit" case which automatically sets this.health to zero
-                //expect(TestVirtualPet.health).toEqual(0);
+
             })
     
         })
 
-        describe("waterPet", () => {
-            test(" ", () => {
-                // Arrange
-                
-               const TestVirtualPet =  new VirtualPet();
-    
-               
-                // Act
-
-                const initialThirst = TestVirtualPet.thirst;
-                
-                TestVirtualPet.waterPet();
-    
-                //Assert
-             
-                expect(TestVirtualPet.thirst - initialThirst).toEqual(10);
-                
-                //tests "carhit" case which automatically sets this.health to zero
-                //expect(TestVirtualPet.health).toEqual(0);
-            })
-    
-        })
-
-        describe("cleanCage", () => {
-            test(" ", () => {
-                // Arrange
-                
-               const TestVirtualPet =  new VirtualPet();
-    
-               
-                // Act
-          
-                TestVirtualPet.cleanCage();
-    
-                //Assert
-             
-                expect(TestVirtualPet.cleanliness).toEqual(100);
-                
-                
-            })
-    
-        })
 
         describe("setName", () => {
             test(" ", () => {
                 // Arrange
                 
-               const TestVirtualPet =  new VirtualPet();
+               const TestVirtualPet =  new VirtualPet("abc123","fido","dog",50,50,"organic");
     
                
                 // Act
@@ -131,7 +73,7 @@ describe("VirtualPet", () => {
             test(" ", () => {
                 // Arrange
                 
-               const TestVirtualPet =  new VirtualPet();
+               const TestVirtualPet =  new VirtualPet("abc123","fido","dog",50,50,"organic");
     
                
                 // Act
@@ -146,26 +88,5 @@ describe("VirtualPet", () => {
             })
     
         })
-
-        describe("getStatus", () => {
-            test(" ", () => {
-                // Arrange
-                
-               const TestVirtualPet =  new VirtualPet();
-    
-               
-                // Act
-          
-                TestVirtualPet.getStatus();
-    
-                //Assert
-             
-                expect(TestVirtualPet.name).toEqual("NoName");
-                
-                
-            })
-    
-        })
         
-
     })

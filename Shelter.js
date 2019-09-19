@@ -28,7 +28,7 @@ class Shelter {
     }
 
     getPetStatus(pet, status) {
-    //  return pet.hunger; 
+     
      switch(status.toLowerCase()) {
             case "hunger": return pet.hunger;
             break;
@@ -72,7 +72,7 @@ class Shelter {
 
         let flip = flipCoin()
         if(flip == "tails"){
-        this.generateOrganicVirtualPet();
+            this.generateOrganicVirtualPet();
         } else {
             this.generateRoboticVirtualPet();
             }
@@ -154,5 +154,5 @@ module.exports = Shelter;
 
 
 
-/// TEST
+
     

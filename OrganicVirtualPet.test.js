@@ -81,4 +81,23 @@ describe("OrganicVirtualPet",() => {
 
         })
     })
+    describe("getStatus", () => {
+        test(" ", () => {
+            // Arrange
+            
+           const TestOrganicVirtualPet =  new OrganicVirtualPet(40,60,80,100,"abc123","fido","dog",50,50,"organic");
+
+           
+            // Act
+      
+            TestOrganicVirtualPet.getStatus();
+
+            //Assert
+         
+            expect(TestOrganicVirtualPet.name).not.toEqual("NoName");
+            
+            
+        })
+
+    })
 })
