@@ -14,7 +14,7 @@ describe("Shelter", () =>{
 
             console.log(TestShelter.virtualPets);
         
-                        // Assert
+            // Assert
             expect(TestShelter.virtualPets.length).toEqual(5);
 
         }) 
